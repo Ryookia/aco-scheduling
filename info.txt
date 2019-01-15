@@ -1,0 +1,17 @@
+Heurystyka max skomplikowanie O(n^2)
+nazwa pliku: n10k2h2.txt
+wynik, h, r, id, id, id
+Fhr, id, id, id
+
+h jako np 0.8
+
+zadania od 0
+
+5.11 oddajemy
+
+k | upperbound | naszczas | procent | czas
+
+n 10 h 0.8
+n 50 h 0.6
+n 100 h 0.4
+n 500 h 0.2
