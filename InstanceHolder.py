@@ -7,9 +7,8 @@ class InstanceHolder:
     size = None
     # array of tasks
     task_array = None
-    # deadline line modifier
     h = 1
-    deadline = 0
+    deadline = None
 
     ready_time = 0
 
@@ -21,6 +20,7 @@ class InstanceHolder:
 
     def set_deadline_mod(self, h):
         self.h = h
+        self.deadline = self.get_deadline()
 
     def parse_task_list(self, task_list):
         for j in range(0, self.size):

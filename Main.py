@@ -78,25 +78,27 @@ def test_meta():
     file_content = FileHelper.load_file(100)
     instance_list_10 = FileHelper.parse_file(file_content)
     for instance in instance_list_10:
-        instance.set_deadline_mod(0.8)
+        instance.set_deadline_mod(0.2)
 
     instance_list_10_ant = FileHelper.parse_file(file_content)
     for instance in instance_list_10_ant:
-        instance.set_deadline_mod(0.8)
+        instance.set_deadline_mod(0.2)
 
-    simple_instance = instance_list_10[0]
-    ant_instance = instance_list_10_ant[0]
-    print("Result: " + str(instance_list_10[0].calculate_result()))
+    simple_instance = instance_list_10[5]
+    ant_instance = instance_list_10_ant[5]
+    print("Result: " + str(instance_list_10[5].calculate_result()))
     simple_instance = Scheduler.schedule_instance(simple_instance)
     print("Result sorted: " + str(simple_instance.calculate_result()))
     ant_instance.ready_time = simple_instance.ready_time
-    heuristic = AntHeuristic(1, 350, 500000, 100.0, 1, 0.1, 1)
+    ant_instance.deadline = simple_instance.get_deadline()
+    heuristic = AntHeuristic(0.9, 200, 30000, 10.0, 1, 0.1, 1)
     result_heu = heuristic.calculate(ant_instance)
+
     # result_heu = heuristic.calculate(ant_instance, simple_instance.task_array, 1000)
     print("Result Ant: " + str(result_heu.calculate_result()))
 
-    # FileHelper.save_file("n100k1h8.txt", result_heu.format_result())
-    # check("./results/n100k1h8.txt")
+    FileHelper.save_file("n100k1h8.txt", result_heu.format_result())
+    check("./results/n100k1h8.txt")
 
 
 # test()
